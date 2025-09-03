@@ -1,0 +1,14 @@
+@startuml
+class usuario
+usuario : - id : int
+usuario : - nome : String
+usuario : - email : String
+usuario ---|> Tarefas : Gerencia
+
+class Tarefas
+Tarefas : id : int
+Tarefas : Descrição : String
+Tarefas : Titulo : String
+
+
+@enduml
