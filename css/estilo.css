@@ -1,3 +1,78 @@
-.dark{
-    background-color: rgb(31, 29, 29);
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    transition: margin-left 0.3s;
+    background: rgb(224, 224, 224);
+}
+
+/* ===== MENU LATERAL ===== */
+.sidebar {
+    height: 100vh;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: -250px;
+    /* começa escondido */
+    background-color: #111;
+    padding-top: 60px;
+    transition: left 0.3s ease;
+    z-index: 1000;
+}
+
+.sidebar.ativo {
+    left: 0;
+    /* aparece */
+}
+
+.sidebar a, h5 {
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    display: block;
+    transition: background 0.3s;
+}
+
+
+.sidebar a:hover {
+    background-color: #575757;
+}
+
+/* ===== BOTÃO MENU ===== */
+
+.clicado{
+    color: white;
+}
+
+#btnMenu {
+    font-size: 20px;
+    margin: 15px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    position: relative;
+    z-index: 2000;
+    /* fica acima da sidebar */
+}
+
+
+
+/* ===== CONTEÚDO ===== */
+.conteudo {
+    padding: 20px;
+    transition: margin-left 0.3s;
+}
+
+.conteudo.shift {
+    margin-left: 250px;
+    /* empurra o conteúdo */
+}
+
+.formCategoria {
+    display: none;
+    margin: 10px 0;
+}
+
+.formCategoria.ativo {
+    display: block;
 }

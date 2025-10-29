@@ -1,5 +1,7 @@
-create database tarefas;
-use tarefas;
+create database givanildo;
+
+use givanildo;
+
 create table tarefa(
     id int primary key auto_increment,
     nome varchar(100) not null,

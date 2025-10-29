@@ -2,7 +2,7 @@
 $host = "localhost";
 $user = "root"; //pode alterar
 $pass = ""; //senha do MySQL
-$db = "tarefas";
+$db = "givanildo";
 
 $conn = mysqli_connect(hostname: $host, username: $user, password: $pass, database: $db);
 
