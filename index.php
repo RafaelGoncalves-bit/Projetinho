@@ -16,7 +16,7 @@ $categorias = listarCategorias();
 </head>
 
 <body>
-    <button id="btnMenu">☰ Menu</button>
+    <button id="btnMenu" class="clicado">☰ Menu</button>
 
     <div class="sidebar" id="sidebar">
         <a href="index.php">🏠 Home</a>
@@ -34,7 +34,7 @@ $categorias = listarCategorias();
                     <div class="categoria-view w-100" id="view-<?php echo htmlspecialchars($categoria); ?>">
                         <a href="#" class="categoria-link d-flex align-items-center text-decoration-none py-1 px-2">
                             <i class="bi bi-folder-fill me-2 text-warning"></i>
-                            <span class="categoria-nome text-white flex-grow-1"><?php echo htmlspecialchars($categoria); ?></span>
+                            <span class="categoria-nome flex-grow-1"><?php echo htmlspecialchars($categoria); ?></span>
                             <button class="btn btn-sm p-0 me-1 text-info" onclick="editarCategoria('<?php echo htmlspecialchars($categoria); ?>')" title="Editar">
                                 <i class="bi bi-pencil-square"></i>
                             </button>
@@ -58,6 +58,9 @@ $categorias = listarCategorias();
                 </div>
             <?php endforeach; ?>
         </div>
+        <button id="btnTema" class="btn-tema">
+            <i class="bi bi-moon-fill"></i>
+        </button>
     </div>
 
     <div class="conteudo" id="conteudo">

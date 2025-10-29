@@ -1,8 +1,23 @@
+:root {
+    --bg-color: rgb(65, 65, 65);
+    --text-color: #fffcfc;
+    --sidebar-bg: #111;
+    --sidebar-hover: #575757;
+}
+
+body.light-mode {
+    --bg-color: #ffffff;
+    --text-color: #333;
+    --sidebar-bg: #d6d3d3;
+    --sidebar-hover: #e9ecef;
+}
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    transition: margin-left 0.3s;
-    background: rgb(224, 224, 224);
+    transition: margin-left 0.3s, background-color 0.3s, color 0.3s;
+    background: var(--bg-color);
+    color: var(--text-color);
 }
 
 /* ===== MENU LATERAL ===== */
@@ -13,9 +28,9 @@ body {
     top: 0;
     left: -250px;
     /* começa escondido */
-    background-color: #111;
+    background-color: var(--sidebar-bg);
     padding-top: 60px;
-    transition: left 0.3s ease;
+    transition: left 0.3s ease, background-color 0.3s;
     z-index: 1000;
 }
 
@@ -35,7 +50,38 @@ body {
 
 
 .sidebar a:hover {
-    background-color: #575757;
+    background-color: var(--sidebar-hover);
+}
+
+.btn-tema {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.btn-tema:hover {
+    transform: scale(1.1);
+}
+
+body.light-mode .sidebar {
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+body.light-mode .sidebar a,
+body.light-mode .sidebar h5,
+body.light-mode .btn-tema,
+body.light-mode .categoria-nome {
+    color: #333;
+}
+
+body.light-mode #btnMenu {
+    color: #333;
 }
 
 /* ===== BOTÃO MENU ===== */
