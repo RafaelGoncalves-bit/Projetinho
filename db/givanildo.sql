@@ -2,12 +2,7 @@ create database givanildo;
 
 use givanildo;
 
-create table tarefa(
+create table tarefas(
     id int primary key auto_increment,
-    nome varchar(100) not null,
-    descricao varchar(255),
-    prioridade enum('Baixa', 'Media', 'Alta') default 'Media',
-    status enum('Pendente', 'Em Andamento', 'Concluida') default 'Pendente',
-    data_criacao timestamp default current_timestamp,
-    data_conclusao date
+    nome VARCHAR(255) not null
 );
