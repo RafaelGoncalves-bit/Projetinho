@@ -10,7 +10,7 @@ $senha = 123;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/estilo.css">
+    <link rel="stylesheet" href="../css/login.css">
     <style>
     .background-login{
             background-image: url("../img/background.png");
@@ -25,7 +25,7 @@ $senha = 123;
                 <div>
                     <h1 class="text-center">Login</h1>
                 </div>
-                <form action="./index.php" method="POST" class="mt-2">
+                <form action="../index.php" method="POST" class="mt-2">
                     <div class="mb-3">
                         <label for="email" class="form-label">E-mail</label>
                         <input type="email" class="form-control" id="email" name="email_conf" required>
