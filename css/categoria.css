@@ -1,0 +1,329 @@
+:root {
+    /* Cores padrão (escuro) */
+    --bg-color: rgb(65, 65, 65);
+    --text-color: #fffcfc;
+    --sidebar-bg: #111;
+    --sidebar-hover: #575757;
+    --tema-bg: #222;
+    --tema-header-bg: rgba(255, 255, 255, 0.05);
+    --tarefa-bg: #2e2e2e;
+    --tarefa-text: #f2f2f2;
+}
+
+body.light-mode {
+    /* Cores do modo claro */
+    --bg-color: #ffffff;
+    --text-color: #333;
+    --sidebar-bg: #d6d3d3;
+    --sidebar-hover: #e9ecef;
+    --tema-bg: #f1f1f1;
+    --tema-header-bg: #e0e0e0;
+    --tarefa-bg: #ffffff;
+    --tarefa-text: #333;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* ===== Sidebar ===== */
+.sidebar {
+    height: 100vh;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: -250px;
+    background-color: var(--sidebar-bg);
+    padding-top: 60px;
+    transition: left 0.3s ease, background-color 0.3s;
+    z-index: 1000;
+}
+
+.sidebar.ativo {
+    left: 0;
+}
+
+.sidebar a, .sidebar h5, .categoria-nome {
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 18px;
+    color: var(--text-color);
+    display: block;
+    transition: background 0.3s, color 0.3s;
+}
+
+.sidebar a:hover {
+    background-color: var(--sidebar-hover);
+}
+
+.btn-tema {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.btn-tema:hover {
+    transform: scale(1.1);
+}
+
+/* ===== Botão Menu ===== */
+#btnMenu {
+    font-size: 20px;
+    margin: 15px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    position: relative;
+    z-index: 2000;
+    color: var(--text-color);
+}
+
+/* ===== Conteúdo principal ===== */
+.conteudo {
+    padding: 20px;
+    transition: margin-left 0.3s, background-color 0.3s, color 0.3s;
+}
+
+/* ===== Kanban ===== */
+.kanban {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 20px;
+    padding-bottom: 15px;
+    scroll-behavior: smooth;
+}
+
+/* Colunas */
+.coluna {
+    flex: 0 0 260px;
+    background-color: var(--tema-bg);
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Cabeçalho do tema */
+.tema-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--tema-header-bg);
+    border-radius: 8px;
+    padding: 8px 10px;
+    margin-bottom: 12px;
+    transition: background-color 0.3s;
+}
+
+.tema-header h4 {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-color);
+    flex: 1;
+    text-align: left;
+}
+
+/* Container dos botões */
+.tema-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Botão de editar tema */
+.btn-editar-tema {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #bbb;
+    font-size: 1.1rem;
+    transition: color 0.2s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-editar-tema:hover {
+    color: #fff;
+    transform: scale(1.15);
+}
+
+.btn-editar-tema i {
+    pointer-events: none;
+}
+
+/* Botão de excluir tema */
+.btn-excluir-tema {
+    background-color: transparent;
+    border: none;
+    color: #dc3545;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 4px 6px;
+    border-radius: 4px;
+    transition: all 0.2s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-excluir-tema i {
+    pointer-events: none;
+}
+
+.btn-excluir-tema:hover {
+    background-color: #dc3545;
+    color: #fff;
+    transform: scale(1.1);
+}
+
+.btn-excluir-tema:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.4);
+}
+
+/* Cartões de tarefas */
+.tarefa-card {
+    background-color: var(--tarefa-bg);
+    color: var(--tarefa-text);
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Adicionar tarefa */
+.add-tarefa {
+    margin-top: auto;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.add-tarefa:hover {
+    background-color: #0056b3;
+}
+
+/* Coluna nova */
+.nova-coluna {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 250px;
+    height: 100%;
+    background-color: #f7f8fa;
+    border: 2px dashed #d0d0d0;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0 8px;
+}
+
+.nova-coluna:hover {
+    background-color: #eef1f4;
+    border-color: #999;
+}
+
+.btn-novo-tema {
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    height: 100%;
+    padding: 40px 20px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.btn-novo-tema i {
+    font-size: 1.4rem;
+}
+
+.btn-novo-tema:hover {
+    color: #2d6cdf;
+    background-color: rgba(45, 108, 223, 0.08);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .coluna {
+        flex: 0 0 200px;
+    }
+
+    .nova-coluna {
+        min-width: 200px;
+    }
+}
+
+/* Texto das categorias da sidebar */
+.categoria-nome {
+    color: var(--text-color) !important;
+    transition: color 0.3s ease;
+}
+
+/* Hover da categoria */
+.categoria-view:hover {
+    background-color: var(--sidebar-hover) !important;
+}
+
+/* Botões dentro da categoria */
+.categoria-view .botoes button {
+    color: #bbb !important;
+    transition: color 0.3s ease;
+}
+
+/* Botão excluir */
+.categoria-view .botoes .btn-excluir {
+    color: #dc3545 !important;
+}
+
+.categoria-view .botoes .btn-excluir:hover {
+    background-color: #dc3545 !important;
+    color: #fff !important;
+}
+
+/* ===== Modo claro ===== */
+body.light-mode .categoria-nome {
+    color: #333 !important;
+}
+
+body.light-mode .categoria-view:hover {
+    background-color: #e9ecef !important;
+}
+
+body.light-mode .categoria-view .botoes button {
+    color: #555 !important;
+}
+
+body.light-mode .categoria-view .botoes .btn-excluir {
+    color: #c82333 !important;
+}
+
+body.light-mode .categoria-view .botoes .btn-excluir:hover {
+    background-color: #c82333 !important;
+    color: #fff !important;
+}

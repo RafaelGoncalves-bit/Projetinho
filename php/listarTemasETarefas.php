@@ -1,29 +1,33 @@
 <?php
 include('conexao.php');
 
-function listarTemasETarefas($idCategoria) {
-    global $conn;
+// Listar categorias
+$categorias = $conn->query("SELECT id, nome FROM categorias ORDER BY nome");
 
-    $dados = [];
-    $sqlTemas = "SELECT id, nome FROM temas WHERE id_categoria = ?";
-    $stmt = $conn->prepare($sqlTemas);
-    $stmt->bind_param("i", $idCategoria);
+while ($cat = $categorias->fetch_assoc()) {
+    echo "<div class='categoria'>";
+    echo "<h3>" . htmlspecialchars($cat['nome']) . "</h3>";
+
+    // Buscar temas dessa categoria (corrigido o nome da coluna)
+    $stmt = $conn->prepare("SELECT id, nome FROM temas WHERE id_categoria = ?");
+    $stmt->bind_param("i", $cat['id']);
     $stmt->execute();
-    $temas = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    $temas = $stmt->get_result();
 
-    foreach ($temas as $tema) {
-        $sqlTarefas = "SELECT id, nome, status FROM tarefas WHERE id_tema = ?";
-        $stmtT = $conn->prepare($sqlTarefas);
-        $stmtT->bind_param("i", $tema['id']);
-        $stmtT->execute();
-        $tarefas = $stmtT->get_result()->fetch_all(MYSQLI_ASSOC);
-
-        $dados[] = [
-            'tema' => $tema['nome'],
-            'tarefas' => $tarefas
-        ];
+    echo "<div class='temas'>";
+    if ($temas->num_rows > 0) {
+        // Mostra os temas existentes
+        while ($tema = $temas->fetch_assoc()) {
+            echo "<div class='tema'>";
+            echo htmlspecialchars($tema['nome']);
+            echo "</div>";
+        }
+    } else {
+        // Se não houver nenhum tema
+        echo "<div class='tema tema-padrao'>Tema</div>";
     }
+    echo "</div>";
 
-    return $dados;
+    echo "</div>";
 }
 ?>

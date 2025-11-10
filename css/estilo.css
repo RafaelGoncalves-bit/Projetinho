@@ -110,7 +110,7 @@ body.light-mode #btnMenu {
 }
 
 .conteudo.shift {
-    margin-left: 250px;
+    margin-left: 150px;
     /* empurra o conteúdo */
 }
 
@@ -123,3 +123,51 @@ body.light-mode #btnMenu {
     display: block;
 }
 
+/* Texto das categorias da sidebar */
+.categoria-nome {
+    color: var(--text-color) !important;
+    transition: color 0.3s ease;
+}
+
+/* Hover da categoria */
+.categoria-view:hover {
+    background-color: var(--sidebar-hover) !important;
+}
+
+/* Botões dentro da categoria */
+.categoria-view .botoes button {
+    color: #bbb !important;
+    transition: color 0.3s ease;
+}
+
+/* Botão excluir */
+.categoria-view .botoes .btn-excluir {
+    color: #dc3545 !important;
+}
+
+.categoria-view .botoes .btn-excluir:hover {
+    background-color: #dc3545 !important;
+    color: #fff !important;
+}
+
+/* ===== Modo claro ===== */
+body.light-mode .categoria-nome {
+    color: #333 !important;
+}
+
+body.light-mode .categoria-view:hover {
+    background-color: #e9ecef !important;
+}
+
+body.light-mode .categoria-view .botoes button {
+    color: #555 !important;
+}
+
+body.light-mode .categoria-view .botoes .btn-excluir {
+    color: #c82333 !important;
+}
+
+body.light-mode .categoria-view .botoes .btn-excluir:hover {
+    background-color: #c82333 !important;
+    color: #fff !important;
+}

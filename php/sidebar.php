@@ -1,24 +1,4 @@
-<?php 
-include("./php/conexao.php");
-include("./php/listarCategorias.php");
-$categorias = listarCategorias();
-?>
-<!DOCTYPE html>
-<html lang="pt-BR">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Menu Lateral Funcional</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="./css/estilo.css">
-</head>
-
-<body>
-    <button id="btnMenu" class="clicado">☰ Menu</button>
-
-    <div class="sidebar" id="sidebar">
+<div class="sidebar" id="sidebar">
         <a href="index.php">🏠 Home</a>
         <a href="#" id="btnCategoria">➕ Nova Categoria</a>
 
@@ -85,13 +65,3 @@ $categorias = listarCategorias();
             <i class="bi bi-moon-fill"></i>
         </button>
     </div>
-
-    <div class="conteudo" id="conteudo">
-        <h1>Bem-vindo!</h1>
-        <p>Agora o menu lateral aparece e funciona direitinho 🎉</p>
-    </div>
-
-    <script src="./js/java.js"></script>
-    <script src="./js/categorias.js"></script>
-</body>
-</html>
