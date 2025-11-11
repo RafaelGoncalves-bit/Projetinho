@@ -127,6 +127,11 @@ body.light-mode #btnMenu {
 .categoria-nome {
     color: var(--text-color) !important;
     transition: color 0.3s ease;
+     display: inline-block;
+    white-space: normal; /* Permite quebra de linha */
+    word-wrap: break-word; /* Quebra palavras muito longas */
+    overflow-wrap: break-word; /* Compatível com navegadores modernos */
+    max-width: 150px; /* ou ajuste conforme o tamanho da sua sidebar */
 }
 
 /* Hover da categoria */
