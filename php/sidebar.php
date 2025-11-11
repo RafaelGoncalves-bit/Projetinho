@@ -1,34 +1,7 @@
-<?php 
-session_start();
-if (!isset($_SESSION['user_id'])) {
-    header('Location: login.php');
-    exit;
-}
-
-include("./php/conexao.php");
-include("./php/listarCategorias.php");
-$categorias = listarCategorias();
-?>
-
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Painel - Tarefas</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="./css/estilo.css">
-</head>
-
-<body>
-    <button id="btnMenu" class="clicado">☰ Menu</button>
-
-    <div class="sidebar" id="sidebar">
+<div class="sidebar" id="sidebar">
         <a href="index.php">🏠 Home</a>
         <a href="#" id="btnCategoria">➕ Nova Categoria</a>
 
-        <!-- Formulário para nova categoria -->
         <div id="formCategoria" class="formCategoria">
             <form action="./php/novaCategoria.php" method="post">
                 <input type="text" name="categorias" placeholder="Nome da Categoria" class="form-control" required>
@@ -36,9 +9,8 @@ $categorias = listarCategorias();
             </form>
         </div>
 
-        <!-- Lista de categorias -->
-        <div class="categorias-lista flex-grow-1">
-            <h5 class="mt-3 mb-2 text-light">Categorias:</h5>
+        <div class="categorias-lista">
+            <h5 class="mt-3 mb-2">Categorias:</h5>
 
             <?php foreach($categorias as $categoria): ?>
                 <div class="categoria-container mb-1">
@@ -89,25 +61,7 @@ $categorias = listarCategorias();
             <?php endforeach; ?>
         </div>
 
-        <!-- Botão de logout no fim da sidebar -->
-        <div class="logout-section mt-auto mb-3 text-center">
-            <a href="php/logout.php" 
-               class="btn btn-danger w-75 fw-bold">
-                <i class="bi bi-box-arrow-right"></i> Sair
-            </a>
-        </div>
-
         <button id="btnTema" class="btn-tema">
             <i class="bi bi-moon-fill"></i>
         </button>
     </div>
-
-    <div class="conteudo" id="conteudo">
-        <h1>Bem-vindo, <?php echo htmlspecialchars($_SESSION['user_name']); ?>!</h1>
-        <p>Selecione uma categoria ao lado para começar a gerenciar suas tarefas.</p>
-    </div>
-
-    <script src="./js/java.js"></script>
-    <script src="./js/categorias.js"></script>
-</body>
-</html>

@@ -33,3 +33,4 @@ btnTema.onclick = () => {
     // Salvar preferência
     localStorage.setItem('tema', isLightMode ? 'light' : 'dark');
 };
+

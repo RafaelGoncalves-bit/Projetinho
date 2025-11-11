@@ -1,30 +1,32 @@
 <?php
-include('./conexao.php'); // Conexão com o banco
+include('conexao.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $categorias = trim($_POST['categorias']);
+    $nome = trim($_POST['categorias']);
 
-    if (!empty($categorias)) {
+    if (!empty($nome)) {
         try {
-            // Chamada da procedure
-            $sql = "CALL inserir_categoria(?)";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("s", $categorias);
-            
-            if ($stmt->execute()) {
-                echo "<script>alert('Categoria inserida com sucesso!');</script>";
-            } else {
-                echo "<script>alert('Erro ao inserir categoria!');</script>";
-            }
-            
+            // Chama a procedure ao invés de fazer INSERT manual
+            $stmt = $conn->prepare("CALL inserir_categoria(?)");
+            $stmt->bind_param("s", $nome);
+            $stmt->execute();
             $stmt->close();
+
+            echo "<script>
+                    alert('Categoria criada com sucesso!');
+                    window.location.href='../index.php';
+                  </script>";
         } catch (Exception $e) {
-            echo "<script>alert('Erro: " . $e->getMessage() . "');</script>";
+            echo "<script>
+                    alert('Erro ao criar categoria: " . $e->getMessage() . "');
+                    window.location.href='../index.php';
+                  </script>";
         }
     } else {
-        echo "<script>alert('Preencha o nome da categoria!');</script>";
+        echo "<script>
+                alert('O nome da categoria não pode estar vazio!');
+                window.history.back();
+              </script>";
     }
 }
-
-header("Location: ../index.php");
 ?>

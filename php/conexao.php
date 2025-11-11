@@ -1,11 +1,11 @@
 <?php
 $host = "localhost";
-$user = "root"; //pode alterar
-$pass = ""; //senha do MySQL
+$user = "root";
+$pass = "";
 $db = "givanildo";
 
-$conn = mysqli_connect(hostname: $host, username: $user, password: $pass, database: $db);
-
-if (!$conn) {
-    die("Deu erro seu broxa " . mysqli_connect_error());
+$conn = new mysqli($host, $user, $pass, $db);
+if ($conn->connect_error) {
+    die("Erro de conexão: " . $conn->connect_error);
 }
+?>
