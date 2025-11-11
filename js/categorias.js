@@ -61,3 +61,67 @@ function excluirTema(idTema) {
     if (!confirm("Tem certeza que deseja excluir este tema?")) return;
     window.location.href = "./excluirTema.php?id=" + idTema;
 }
+
+// ======== Marcar tarefa como concluída ========
+function marcarConcluida(idTarefa) {
+    const tarefa = document.getElementById(`tarefa-${idTarefa}`);
+    if (!tarefa) return;
+
+    // Atualiza visualmente
+    tarefa.classList.toggle('concluida');
+
+    // Atualiza no banco de dados via AJAX
+    fetch(`./concluirTarefa.php?id=${idTarefa}`)
+        .then(resp => {
+            if (!resp.ok) throw new Error("Erro ao atualizar tarefa");
+        })
+        .catch(err => {
+            console.error(err);
+            // Desfaz visualmente se deu erro
+            tarefa.classList.toggle('concluida');
+            alert("Não foi possível atualizar o status da tarefa.");
+        });
+}
+
+function editarTarefa(id) {
+    const novoNome = prompt("Novo nome da tarefa:");
+    const novaDescricao = prompt("Nova descrição da tarefa:");
+
+    if (!novoNome) return;
+
+    fetch('../php/editarTarefa.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `id=${id}&nome=${encodeURIComponent(novoNome)}&descricao=${encodeURIComponent(novaDescricao)}`
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'sucesso') {
+            location.reload();
+        } else {
+            alert('Erro: ' + data.mensagem);
+        }
+    })
+    .catch(err => console.error('Erro na requisição:', err));
+}
+
+
+function excluirTarefa(id) {
+    if (!confirm("Tem certeza que deseja excluir esta tarefa?")) return;
+
+    fetch('../php/excluirTarefa.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `id=${id}`
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'sucesso') {
+            location.reload();
+        } else {
+            alert('Erro: ' + data.mensagem);
+        }
+    })
+    .catch(err => console.error('Erro na requisição:', err));
+}
+

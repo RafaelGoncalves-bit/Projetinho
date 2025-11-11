@@ -3,6 +3,12 @@
     background-image: linear-gradient(20deg, blueviolet, black, darkblue);
 }
 
+.background-login{
+            background-image: url("../img/background.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
 .login-card{
     background: #ffffff;
     width: 420px;

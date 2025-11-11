@@ -327,3 +327,150 @@ body.light-mode .categoria-view .botoes .btn-excluir:hover {
     background-color: #c82333 !important;
     color: #fff !important;
 }
+
+/* ======== Botão de Concluir Tarefa ======== */
+.btn-concluir-tarefa {
+    background: transparent;
+    border: none;
+    color: #28a745;
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.btn-concluir-tarefa:hover {
+    transform: scale(1.15);
+    color: #2ecc71;
+}
+
+/* ======== Tarefa Concluída ======== */
+.tarefa-card.concluida {
+    background-color: #1e1e1e;
+    opacity: 0.6;
+    text-decoration: line-through;
+    transition: all 0.3s ease;
+}
+
+body.light-mode .tarefa-card.concluida {
+    background-color: #e0e0e0;
+    color: #666;
+}
+
+
+/* ======== Botões de Ações das Tarefas ======== */
+.tarefa-botoes {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.tarefa-botoes button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+/* Botão de Concluir */
+.btn-concluir-tarefa {
+    color: #28a745;
+}
+
+.btn-concluir-tarefa:hover {
+    color: #2ecc71;
+    transform: scale(1.15);
+}
+
+/* Botão de Editar */
+.btn-editar-tarefa {
+    color: #007bff;
+}
+
+.btn-editar-tarefa:hover {
+    color: #3399ff;
+    transform: scale(1.15);
+}
+
+/* Botão de Excluir */
+.btn-excluir-tarefa {
+    color: #dc3545;
+}
+
+.btn-excluir-tarefa:hover {
+    color: #ff4d4d;
+    transform: scale(1.15);
+}
+
+/* ======== Ajustes no Modo Claro ======== */
+body.light-mode .btn-concluir-tarefa {
+    color: #1e7e34;
+}
+
+body.light-mode .btn-editar-tarefa {
+    color: #0056b3;
+}
+
+body.light-mode .btn-excluir-tarefa {
+    color: #c82333;
+}
+
+body.light-mode .btn-concluir-tarefa:hover {
+    color: #28a745;
+}
+
+body.light-mode .btn-editar-tarefa:hover {
+    color: #007bff;
+}
+
+body.light-mode .btn-excluir-tarefa:hover {
+    color: #dc3545;
+}
+
+/* Concluídas row: mesma largura/estrutura das colunas do kanban */
+.concluidas-row {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    align-items: flex-start;
+}
+
+/* cada coluna das concluidas deve obedecer ao mesmo sizing das colunas .coluna */
+.coluna-concluidas {
+    flex: 0 0 260px; /* mesmo valor que .coluna */
+    min-height: 40px;
+    background: transparent;
+    border-radius: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* ajuste visual para o título "Concluídas" */
+.coluna-concluidas h5 {
+    margin: 0 0 6px 0;
+    font-weight: 600;
+}
+
+/* mantém consistência do cartão concluído */
+.tarefa-card.concluida {
+    background-color: rgba(0,0,0,0.15);
+    text-decoration: line-through;
+    color: var(--tarefa-text);
+    opacity: 0.85;
+    padding: 8px;
+    border-radius: 6px;
+}
+
+/* placeholder nova coluna (pequeno ajuste) */
+.coluna-concluidas p.small {
+    text-align: center;
+    margin: 8px 0;
+    color: #999;
+}
+
+/* responsivo: reduzir largura das colunas quando viewport menor */
+@media (max-width: 768px) {
+    .coluna, .coluna-concluidas {
+        flex: 0 0 200px;
+    }
+}

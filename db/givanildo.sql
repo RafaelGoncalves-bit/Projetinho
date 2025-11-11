@@ -5,8 +5,9 @@ use givanildo;
 create table usuarios(
     id int primary key auto_increment,
     nome varchar(255) not null,
-    email varchar(255) not null,
-    senha varchar(255) not null
+    email VARCHAR(255) NOT NULL UNIQUE,
+    senha VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 create table categorias(
@@ -27,6 +28,7 @@ create table tarefas(
     descricao TEXT,
     id_usuario int,
     id_tema int,
+    concluida TINYINT(1) DEFAULT 0,
     foreign key (id_usuario) references usuarios (id),
     foreign key (id_tema) references temas (id)
 );
