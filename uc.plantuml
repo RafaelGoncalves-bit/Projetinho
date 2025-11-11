@@ -1,14 +1,28 @@
 @startuml
-class usuario
-usuario : - id : int
-usuario : - nome : String
-usuario : - email : String
-usuario ---|> Tarefas : Gerencia
+left to right direction
+actor "Usuário" as U
 
-class Tarefas
-Tarefas : id : int
-Tarefas : Descrição : String
-Tarefas : Titulo : String
+rectangle "Sistema de Gerenciamento de Tarefas" {
+    usecase "Cadastrar-se" as UC1
+    usecase "Fazer Login" as UC2
+    usecase "Fazer Logout" as UC3
+    usecase "Criar Categoria" as UC4
+    usecase "Editar Categoria" as UC5
+    usecase "Excluir Categoria" as UC6
+    usecase "Visualizar Categorias" as UC7
+    usecase "Visualizar Tarefas" as UC8
+    usecase "Adicionar Tarefa" as UC9
+    usecase "Concluir Tarefa." as UC10
+}
 
-
+U --> UC1
+U --> UC2
+U --> UC3
+U --> UC4
+U --> UC5
+U --> UC6
+U --> UC7
+U --> UC8
+U --> UC9
+U --> UC10
 @enduml
